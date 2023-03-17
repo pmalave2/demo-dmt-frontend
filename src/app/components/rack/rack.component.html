@@ -1,0 +1,23 @@
+<div>
+  <h1>Add New Rack</h1>
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Rack</mat-label>
+      <input [(ngModel)]="rack.uuid" disabled matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select [(value)]="rack.type">
+        <div *ngFor="let item of getRackTypeList()">
+          <mat-option value="{{item | uppercase}}">{{item | uppercase}}</mat-option>
+        </div>
+      </mat-select>
+    </mat-form-field>
+  </p>
+</div>
+
+<button mat-flat-button color="primary" type="button" (click)="saveRack(rack)">SAVE</button>
+<button mat-flat-button color="accent" type="button" (click)="goBack()">BACK</button>

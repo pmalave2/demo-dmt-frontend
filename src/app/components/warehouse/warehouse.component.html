@@ -1,0 +1,77 @@
+<div *ngIf="!isNew()">
+  <h1 *ngIf="canEdit()">Warehouse {{warehouse.client | uppercase}}</h1>
+  <h1 *ngIf="!canEdit()">Edit Warehouse {{warehouse.client | uppercase}}</h1>
+
+  <div class="form">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Warehouse</mat-label>
+        <input [(ngModel)]="warehouse.uuid" disabled matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Client</mat-label>
+        <input [(ngModel)]="warehouse.client" [disabled]="canEdit()" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select [(value)]="warehouse.family" [disabled]="canEdit()">
+          <mat-option value="EST">EST</mat-option>
+          <mat-option value="ROB">ROB</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Size</mat-label>
+        <input [(ngModel)]="warehouse.size" [disabled]="canEdit()" matInput>
+      </mat-form-field>
+    </p>
+  </div>
+  
+  <div class="datatable-rack">
+    <h1>Racks of Warehouse {{warehouse.client | uppercase}}</h1>
+
+    <app-rack-datatable [warehouse]="warehouse"></app-rack-datatable>
+  </div>
+</div>
+
+<div *ngIf="isNew()">
+  <h1>Add Warehouse</h1>
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Warehouse</mat-label>
+      <input [(ngModel)]="warehouse.uuid" disabled matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Client</mat-label>
+      <input [(ngModel)]="warehouse.client" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select [(value)]="warehouse.family">
+        <div *ngFor="let item of getWarehouseFamilyList()">
+          <mat-option value="{{item | uppercase}}">{{item | uppercase}}</mat-option>
+        </div>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Size</mat-label>
+      <input [(ngModel)]="warehouse.size" matInput>
+    </mat-form-field>
+  </p>
+</div>
+
+<button mat-flat-button color="primary" type="button" *ngIf="isNew()" (click)="saveWarehouse(warehouse)">SAVE</button>
+<button mat-flat-button color="primary" type="button" *ngIf="!canEdit()" (click)="updateWarehouse(warehouse)">UPDATE</button>
+<button mat-flat-button color="accent" type="button" (click)="goBack()">BACK</button>
