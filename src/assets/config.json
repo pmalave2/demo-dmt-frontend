@@ -1,4 +1,4 @@
 {
-  "rackBaseUrl": "http://127.0.0.1:8082",
-  "warehouseBaseUrl": "http://127.0.0.1:8082"
+  "rackBaseUrl": "https://dmt-dev-servicecd937bb-dmt-dev-msd3bde0a.azuremicroservices.io",
+  "warehouseBaseUrl": "https://dmt-dev-servicecd937bb-dmt-dev-msd3bde0a.azuremicroservices.io"
 }
