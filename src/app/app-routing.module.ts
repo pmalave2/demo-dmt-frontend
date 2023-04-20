@@ -5,7 +5,7 @@ import { WarehouseComponent } from './components/warehouse/warehouse.component';
 import { DatatableComponent } from './datatable/datatable.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/datatable', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'datatable', component: DatatableComponent },
   { path: 'warehouse/:id', component: WarehouseComponent },
   { path: 'warehouse', component: WarehouseComponent },
